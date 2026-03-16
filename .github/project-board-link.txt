@@ -1,0 +1,24 @@
+Week 1 (Now - Apr 12)
+- Write problem statement
+- Define threat model
+- Create architecture diagram
+- Download dataset
+- Submit proposal
+- Explore dataset
+
+Week 2 (Apr 13 - Apr 19)
+- Build data loading script
+- Identify behavioral features
+- Implement preprocessing
+
+Week 3 (Apr 20 - Apr 26)
+- Implement feature extraction
+- Train Isolation Forest
+- Generate anomaly alerts
+
+Week 4 (Apr 27 - May 3)
+- Evaluate results
+- Tune model
+- Prepare demo
+- Write final report
+- Package reproducibility files
