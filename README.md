@@ -4,4 +4,5 @@ This project addresses the problem of detecting abnormal user activity within en
 The project uses the [CERT Insider Threat Detection Dataset] (https://www.kaggle.com/datasets/mrajaxnp/cert-insider-threat-detection-research?resource=download) on Kaggle as the primary data source which contains simulated enterprise activity logs including user logins, file access events, device connections, email activity, and web browsing records in order to 
 
 ## Set Up
-
+Run the bootstrap command:
+make bootstrap
