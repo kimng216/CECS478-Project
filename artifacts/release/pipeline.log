@@ -1,0 +1,16 @@
+2026-03-22 15:22:21,844 INFO Starting pipeline
+2026-03-22 15:22:21,844 INFO Loading CSV files
+2026-03-22 15:22:37,341 INFO Building features
+2026-03-22 15:23:15,504 INFO Built feature table with 1393150 rows
+2026-03-22 15:23:15,910 INFO Running Isolation Forest
+2026-03-22 15:23:22,714 INFO Detected 27120 anomalies
+2026-03-22 15:23:22,716 INFO Saving outputs
+2026-03-22 15:23:22,866 INFO Pipeline completed successfully
+2026-03-23 15:04:59,798 INFO Starting pipeline
+2026-03-23 15:04:59,798 INFO Loading CSV files
+2026-03-23 15:05:31,903 INFO Building features
+2026-03-23 15:06:20,823 INFO Built feature table with 1393150 rows
+2026-03-23 15:06:21,184 INFO Running Isolation Forest
+2026-03-23 15:06:29,231 INFO Detected 27120 anomalies
+2026-03-23 15:06:29,238 INFO Saving outputs
+2026-03-23 15:06:29,478 INFO Pipeline completed successfully

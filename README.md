@@ -6,3 +6,8 @@ The project uses the [CERT Insider Threat Detection Dataset] (https://www.kaggle
 ## Set Up
 Run the bootstrap command:
 make bootstrap
+
+Run the project:
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
