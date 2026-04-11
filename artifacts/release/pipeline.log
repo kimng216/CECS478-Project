@@ -18,3 +18,12 @@
 2026-04-11 22:26:38,293 INFO Loading CSV files
 2026-04-11 22:37:20,705 INFO Starting pipeline
 2026-04-11 22:37:20,706 INFO Loading CSV files
+2026-04-11 22:38:36,829 INFO Starting pipeline
+2026-04-11 22:38:36,829 INFO Loading CSV files
+2026-04-11 22:38:36,863 INFO Building features
+2026-04-11 22:38:36,964 INFO Built feature table with 4051 rows
+2026-04-11 22:38:36,965 INFO Running Isolation Forest
+2026-04-11 22:38:37,061 INFO Detected 77 anomalies
+2026-04-11 22:38:37,062 INFO Saving outputs
+2026-04-11 22:38:37,139 INFO Saved tables and chart to artifacts/release
+2026-04-11 22:38:37,139 INFO Pipeline completed successfully
