@@ -1,6 +1,7 @@
 import logging
 import os
 
+import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.ensemble import IsolationForest
 
@@ -31,12 +32,16 @@ def build_features(
     logging.info("Building features")
 
     for df in [logon, file_df, device]:
-        df["date"] = pd.to_datetime(df["date"], format="%m/%d/%Y %H:%M:%S", errors="coerce")
+        df["date"] = pd.to_datetime(
+            df["date"], format="%m/%d/%Y %H:%M:%S", errors="coerce"
+        )
         df["day"] = df["date"].dt.date
 
     logon_events = logon[logon["activity"] == "Logon"].copy()
     logon_events["hour"] = logon_events["date"].dt.hour
-    logon_events["after_hours"] = ((logon_events["hour"] < 6) | (logon_events["hour"] > 18)).astype(int)
+    logon_events["after_hours"] = (
+        (logon_events["hour"] < 6) | (logon_events["hour"] > 18)
+    ).astype(int)
 
     logon_features = (
         logon_events.groupby(["user", "day"])
@@ -115,9 +120,49 @@ def save_outputs(results: pd.DataFrame) -> None:
         "total_rows": int(len(results)),
         "total_alerts": int(results["is_anomaly"].sum()),
     }
-    pd.DataFrame([metrics]).to_json(os.path.join(ARTIFACT_DIR, "metrics.json"), orient="records", indent=2)
+    pd.DataFrame([metrics]).to_json(
+        os.path.join(ARTIFACT_DIR, "metrics.json"),
+        orient="records",
+        indent=2,
+    )
 
-    results.head(20).to_csv(os.path.join(ARTIFACT_DIR, "feature_preview.csv"), index=False)
+    results.head(20).to_csv(
+        os.path.join(ARTIFACT_DIR, "feature_preview.csv"),
+        index=False,
+    )
+
+    top_anomalies = results.sort_values("anomaly_score").head(10)
+    top_anomalies.to_csv(
+        os.path.join(ARTIFACT_DIR, "top_anomalies.csv"),
+        index=False,
+    )
+
+    anomaly_counts = (
+        alerts.groupby("user")
+        .size()
+        .reset_index(name="anomaly_count")
+        .sort_values("anomaly_count", ascending=False)
+    )
+    anomaly_counts.to_csv(
+        os.path.join(ARTIFACT_DIR, "anomaly_counts_by_user.csv"),
+        index=False,
+    )
+
+    if not anomaly_counts.empty:
+        plt.figure(figsize=(8, 5))
+        plt.bar(
+            anomaly_counts["user"].head(10),
+            anomaly_counts["anomaly_count"].head(10),
+        )
+        plt.xticks(rotation=45, ha="right")
+        plt.xlabel("User")
+        plt.ylabel("Anomaly Count")
+        plt.title("Top Users by Anomaly Count")
+        plt.tight_layout()
+        plt.savefig(os.path.join(ARTIFACT_DIR, "anomalies_by_user.png"))
+        plt.close()
+
+    logging.info("Saved tables and chart to %s", ARTIFACT_DIR)
 
 
 def main() -> None:
