@@ -1,5 +1,5 @@
 # User Activity Monitoring and Anomaly Detection  
-
+Video Demo (Combined Alpha–Beta Integrated Release): https://youtu.be/Lmi1Udd8RpQ
 ## Project Overview and Dataset  
 This project addresses the problem of detecting abnormal user activity within enterprise systems by applying automated anomaly detection techniques to activity logs. By analyzing patterns such as login times, file access frequency, device usage, and more, the system aims to identify behavior that significantly deviates from established user baselines. Detecting such anomalies can help security analysts identify potential security risks, unauthorized access, or misuse of system resources. The goal of this project is to design and evaluate an automated system that identifies deviations from normal user behavior in enterprise activity logs using anomaly detection methods. The system will use Isolation Forest, an unsupervised anomaly detection method, to detect abnormal patterns in user activity logs.  
 
