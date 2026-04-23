@@ -162,6 +162,28 @@ def save_outputs(results: pd.DataFrame) -> None:
         plt.savefig(os.path.join(ARTIFACT_DIR, "anomalies_by_user.png"))
         plt.close()
 
+        # Histogram of anomaly scores
+        plt.figure(figsize=(8, 5))
+        plt.hist(results["anomaly_score"], bins=30)
+        plt.xlabel("Anomaly Score")
+        plt.ylabel("Frequency")
+        plt.title("Distribution of Anomaly Scores")
+        plt.tight_layout()
+        plt.savefig(os.path.join(ARTIFACT_DIR, "anomaly_score_distribution.png"))
+        plt.close()
+
+        # Anomalies over time
+        time_counts = results.groupby("day")["is_anomaly"].sum()
+
+        plt.figure(figsize=(8, 5))
+        time_counts.plot()
+        plt.xlabel("Day")
+        plt.ylabel("Anomaly Count")
+        plt.title("Anomalies Over Time")
+        plt.tight_layout()
+        plt.savefig(os.path.join(ARTIFACT_DIR, "anomalies_over_time.png"))
+        plt.close()
+
     logging.info("Saved tables and chart to %s", ARTIFACT_DIR)
 
 
