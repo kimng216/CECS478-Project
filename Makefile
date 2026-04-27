@@ -10,5 +10,9 @@ demo:
 test:
 	docker compose run --rm -e PYTHONPATH=/app app python -m pytest tests --cov=src --cov-report=term-missing
 
+clean:
+	docker compose down -v
+	rm -rf artifacts/release/*
+
 down:
 	docker compose down
